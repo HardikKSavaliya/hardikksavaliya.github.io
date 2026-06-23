@@ -1,127 +1,699 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Welcome to portfolio of Hardik Savaliya" />
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://hardikksavaliya.github.io">
-    <meta property="og:title" content="Welcome to portfolio of Hardik Savaliya">
-    <meta property="og:description" content="Couple of years experience in .Net Framework. Development experience in C#, MVC, MS SQL along with an Angular. Sound knowledge in solidity and hyper ledger. ">
-    <meta property="og:image" content="https://hardikksavaliya.github.io/images/thumb.jpg">
-    <title>Welcome to portfolio of Hardik Savaliya</title>
-    <link rel="shortcut icon" type="image/png" href="images/favicon.png" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Quicksand|Marck+Script">
-    <link rel="stylesheet" href="css/style.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hardik Savaliya — Systems Designer, Rust &amp; Blockchain</title>
+<meta name="description" content="Systems designer with 10+ years across C#, Node, and decentralized infrastructure — now building in Rust for blockchain and distributed systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a0b;
+  --bg-raised:#111113;
+  --card:#151517;
+  --border:#232326;
+  --border-soft:#1c1c1f;
+  --text:#ededed;
+  --text-dim:#9a9a9e;
+  --text-faint:#5e5e63;
+  --amber:#ff7a1a;
+  --amber-dim:#c8590a;
+  --amber-glow:rgba(255,122,26,0.14);
+  --green:#5fb98c;
+  --mono:'JetBrains Mono', monospace;
+  --sans:'Inter', sans-serif;
+  --maxw:1100px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--sans);
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background-image:
+    radial-gradient(ellipse 800px 500px at 15% 0%, var(--amber-glow), transparent 60%),
+    radial-gradient(ellipse 600px 400px at 100% 20%, rgba(95,185,140,0.06), transparent 60%);
+  pointer-events:none;
+  z-index:0;
+}
+a{color:inherit;text-decoration:none;}
+::selection{background:var(--amber);color:#0a0a0b;}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:2px;}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px;position:relative;z-index:1;}
+.eyebrow{
+  font-family:var(--mono);
+  font-size:12px;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--text-faint);
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.eyebrow .bar{width:18px;height:1px;background:var(--amber-dim);}
+
+/* ===== NAV ===== */
+nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(10,10,11,0.82);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border-soft);
+}
+nav .wrap{
+  display:flex;align-items:center;justify-content:space-between;
+  height:64px;
+}
+.brand{font-family:var(--mono);font-weight:700;font-size:15px;letter-spacing:-0.02em;}
+.brand .dot{color:var(--amber);}
+.navlinks{display:flex;gap:28px;font-size:14px;color:var(--text-dim);}
+.navlinks a{transition:color .15s;}
+.navlinks a:hover{color:var(--text);}
+.navcta{
+  font-family:var(--mono);font-size:12px;padding:8px 14px;
+  border:1px solid var(--border);border-radius:6px;color:var(--text);
+  transition:border-color .15s, background .15s;
+}
+.navcta:hover{border-color:var(--amber-dim);background:var(--amber-glow);}
+.navmobile{display:none;}
+
+/* ===== HERO ===== */
+.hero{padding:96px 0 72px;position:relative;}
+.status-line{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:12px;letter-spacing:0.04em;
+  padding:6px 12px 6px 10px;border:1px solid var(--border);border-radius:20px;
+  color:var(--text-dim);margin-bottom:28px;
+}
+.status-dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
+
+.diffline{font-family:var(--mono);font-size:15px;display:block;margin-bottom:2px;}
+.diffline.minus{color:var(--text-faint);text-decoration:line-through;text-decoration-color:var(--text-faint);}
+.diffline.minus .sym{color:#7a3a1a;margin-right:8px;}
+.diffline.plus{color:var(--amber);}
+.diffline.plus .sym{color:var(--amber);margin-right:8px;}
+
+h1.hero-title{
+  font-family:var(--mono);
+  font-weight:700;
+  font-size:clamp(34px, 5.4vw, 64px);
+  line-height:1.08;
+  letter-spacing:-0.02em;
+  margin:20px 0 24px;
+  max-width:850px;
+}
+h1.hero-title .accent{color:var(--amber);}
+
+.hero-sub{
+  font-size:18px;color:var(--text-dim);max-width:600px;line-height:1.65;margin-bottom:36px;
+}
+.hero-sub strong{color:var(--text);font-weight:600;}
+
+.hero-meta{display:flex;flex-wrap:wrap;gap:36px;margin-bottom:40px;}
+.meta-item .meta-label{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--text-faint);margin-bottom:6px;}
+.meta-item .meta-val{font-size:15px;color:var(--text);}
+.meta-item .meta-val .tag{color:var(--amber);}
+
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:48px;}
+.btn{
+  font-family:var(--mono);font-size:13px;font-weight:500;
+  padding:13px 22px;border-radius:7px;display:inline-flex;align-items:center;gap:8px;
+  transition:all .15s;
+}
+.btn-primary{background:var(--amber);color:#0a0a0b;}
+.btn-primary:hover{background:#ff8c3d;transform:translateY(-1px);}
+.btn-ghost{border:1px solid var(--border);color:var(--text);}
+.btn-ghost:hover{border-color:var(--amber-dim);background:var(--amber-glow);}
+
+.hero-socials{display:flex;gap:18px;}
+.hero-socials a{color:var(--text-faint);font-size:13px;font-family:var(--mono);transition:color .15s;border-bottom:1px solid transparent;}
+.hero-socials a:hover{color:var(--amber);border-color:var(--amber-dim);}
+
+/* ===== MARQUEE ===== */
+.marquee-section{border-top:1px solid var(--border-soft);border-bottom:1px solid var(--border-soft);padding:28px 0;overflow:hidden;background:var(--bg-raised);}
+.marquee-row{display:flex;white-space:nowrap;}
+.marquee-track{display:flex;gap:14px;animation:scroll 38s linear infinite;padding-right:14px;}
+.marquee-row.reverse .marquee-track{animation-direction:reverse;animation-duration:44s;}
+@keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+.pill{
+  font-family:var(--mono);font-size:13px;color:var(--text-dim);
+  border:1px solid var(--border);padding:6px 14px;border-radius:20px;white-space:nowrap;
+  flex-shrink:0;
+}
+.pill.hot{color:var(--amber);border-color:var(--amber-dim);}
+.marquee-row{margin-bottom:14px;}
+.marquee-row:last-child{margin-bottom:0;}
+@media (prefers-reduced-motion: reduce){.marquee-track{animation:none;}}
+
+/* ===== SECTION SHARED ===== */
+section{padding:96px 0;position:relative;}
+.section-head{margin-bottom:56px;max-width:680px;}
+.section-head h2{
+  font-family:var(--sans);font-weight:800;font-size:clamp(28px,3.6vw,40px);
+  letter-spacing:-0.02em;margin-top:14px;line-height:1.15;
+}
+.section-head h2 em{color:var(--amber);font-style:normal;}
+.section-head p{color:var(--text-dim);font-size:16px;margin-top:14px;max-width:560px;}
+
+/* ===== STATS ===== */
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.stat-box{background:var(--bg);padding:32px 28px;}
+.stat-num{font-family:var(--mono);font-weight:700;font-size:clamp(26px,3vw,38px);color:var(--amber);}
+.stat-label{font-size:13px;color:var(--text-dim);margin-top:6px;}
+
+/* ===== ABOUT ===== */
+.about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:56px;align-items:start;}
+.about-text p{color:var(--text-dim);font-size:16px;line-height:1.75;margin-bottom:18px;}
+.about-text p strong{color:var(--text);font-weight:600;}
+.code-card{
+  background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;
+  font-family:var(--mono);font-size:13px;
+}
+.code-card-head{
+  display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--border);
+  color:var(--text-faint);font-size:12px;
+}
+.code-card-head .dots{display:flex;gap:6px;margin-right:6px;}
+.code-card-head .dots span{width:9px;height:9px;border-radius:50%;background:#2a2a2d;}
+.code-card-body{padding:18px 16px;line-height:1.85;}
+.code-card-body .c1{color:var(--text-faint);}
+.code-card-body .c2{color:var(--amber);}
+.code-card-body .c3{color:var(--green);}
+.code-card-body .c4{color:#7aa2f7;}
+.code-card-body .indent{padding-left:18px;}
+
+/* ===== TIMELINE / MIGRATION LOG ===== */
+.log{position:relative;}
+.log::before{content:'';position:absolute;left:7px;top:6px;bottom:6px;width:1px;background:var(--border);}
+.log-entry{position:relative;padding-left:40px;padding-bottom:44px;}
+.log-entry:last-child{padding-bottom:0;}
+.log-dot{
+  position:absolute;left:0;top:4px;width:15px;height:15px;border-radius:50%;
+  background:var(--bg);border:2px solid var(--border);
+}
+.log-entry.current .log-dot{border-color:var(--amber);box-shadow:0 0 0 4px var(--amber-glow);}
+.log-meta{display:flex;gap:14px;align-items:baseline;flex-wrap:wrap;margin-bottom:6px;}
+.log-date{font-family:var(--mono);font-size:12px;color:var(--text-faint);}
+.log-loc{font-family:var(--mono);font-size:12px;color:var(--text-faint);}
+.log-loc::before{content:'·';margin-right:14px;color:var(--border);}
+.log-role{font-size:18px;font-weight:700;margin-bottom:6px;}
+.log-role .at{color:var(--amber);font-weight:600;}
+.log-desc{color:var(--text-dim);font-size:15px;line-height:1.65;max-width:620px;}
+.log-tags{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;}
+.log-tags span{font-family:var(--mono);font-size:11px;color:var(--text-faint);border:1px solid var(--border-soft);padding:3px 9px;border-radius:4px;}
+
+/* ===== PROJECTS ===== */
+.proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;}
+.proj-card{
+  background:var(--card);border:1px solid var(--border);border-radius:12px;padding:28px;
+  transition:border-color .2s, transform .2s;
+  display:flex;flex-direction:column;
+}
+.proj-card:hover{border-color:var(--amber-dim);transform:translateY(-2px);}
+.proj-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;}
+.proj-status{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;padding:4px 9px;border-radius:4px;}
+.proj-status.planned{color:var(--text-faint);border:1px solid var(--border-soft);}
+.proj-status.building{color:var(--amber);border:1px solid var(--amber-dim);background:var(--amber-glow);}
+.proj-status.live{color:var(--green);border:1px solid rgba(95,185,140,0.3);background:rgba(95,185,140,0.08);}
+.proj-pillar{font-family:var(--mono);font-size:11px;color:var(--text-faint);}
+.proj-title{font-size:19px;font-weight:700;margin-bottom:10px;}
+.proj-desc{color:var(--text-dim);font-size:14.5px;line-height:1.6;margin-bottom:18px;flex-grow:1;}
+.proj-stack{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:16px;}
+.proj-stack span{font-family:var(--mono);font-size:11px;color:var(--text-dim);background:var(--bg-raised);padding:3px 8px;border-radius:4px;border:1px solid var(--border-soft);}
+.proj-link{font-family:var(--mono);font-size:13px;color:var(--text);border-top:1px solid var(--border-soft);padding-top:14px;display:flex;align-items:center;gap:6px;transition:color .15s;}
+.proj-card:hover .proj-link{color:var(--amber);}
+
+/* ===== STACK ===== */
+.stack-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.stack-col{background:var(--bg);padding:28px 30px;}
+.stack-col h3{font-family:var(--mono);font-size:13px;color:var(--amber);text-transform:uppercase;letter-spacing:.08em;margin-bottom:16px;}
+.stack-tags{display:flex;flex-wrap:wrap;gap:8px;}
+.stack-tags span{font-family:var(--mono);font-size:12.5px;color:var(--text-dim);border:1px solid var(--border-soft);padding:5px 11px;border-radius:5px;}
+.stack-tags span.weak{color:var(--text-faint);text-decoration:line-through;}
+
+/* ===== CONTACT ===== */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
+.contact-text p{color:var(--text-dim);font-size:17px;line-height:1.7;margin-bottom:14px;max-width:480px;}
+.contact-text p strong{color:var(--text);}
+.contact-list{margin-top:32px;}
+.contact-row{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 0;border-bottom:1px solid var(--border-soft);
+  transition:padding-left .15s;
+}
+.contact-row:hover{padding-left:6px;}
+.contact-row:first-child{border-top:1px solid var(--border-soft);}
+.contact-label{font-family:var(--mono);font-size:12px;color:var(--text-faint);text-transform:uppercase;letter-spacing:.08em;width:90px;}
+.contact-val{font-size:15px;color:var(--text);font-weight:500;}
+.contact-arrow{color:var(--text-faint);transition:color .15s, transform .15s;}
+.contact-row:hover .contact-arrow{color:var(--amber);transform:translateX(3px);}
+
+/* ===== FOOTER ===== */
+footer{border-top:1px solid var(--border-soft);padding:48px 0;}
+.footer-grid{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px;}
+.footer-left .brand{margin-bottom:8px;}
+.footer-left p{color:var(--text-faint);font-size:13px;}
+.footer-right{display:flex;gap:24px;}
+.footer-right a{font-family:var(--mono);font-size:12px;color:var(--text-faint);transition:color .15s;}
+.footer-right a:hover{color:var(--amber);}
+.footer-bottom{margin-top:32px;padding-top:24px;border-top:1px solid var(--border-soft);font-family:var(--mono);font-size:12px;color:var(--text-faint);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width:860px){
+  .navlinks{display:none;}
+  .about-grid,.contact-grid{grid-template-columns:1fr;gap:40px;}
+  .stats-grid{grid-template-columns:1fr;}
+  .stack-grid{grid-template-columns:1fr;}
+  .proj-grid{grid-template-columns:1fr;}
+  section{padding:64px 0;}
+  .hero{padding:56px 0 48px;}
+}
+@media (max-width:520px){
+  .wrap{padding:0 20px;}
+  .hero-meta{gap:24px;}
+  .log-loc{display:block;}
+  .log-loc::before{display:none;}
+}
+</style>
 </head>
-
 <body>
-    <div class="container">
-        <!-- Header Section -->
-        <div class="header text-center mt-4 mb-4">
-            <h1 class="username">Hardik Savaliya</h1>
-        </div>
-        <hr class="line">
 
-        <div class="row">
-            <!-- Expertise Section -->
-            <div class="col-md-4">
-                <h2>Blockchain Technologies</h2>
-                <ul>
-                    <li>Smart Contract Development: Solidity, Rust, Vyper</li>
-                    <li>Blockchain Platforms: Ethereum, Solana, Polkadot, Binance Smart Chain, Layer 2</li>
-                    <li>Decentralized Finance (DeFi): Protocol Design, Tokenomics, DEX, Yield Farming, Staking</li>
-                    <li>NFTs & Token Standards: ERC-721, ERC-1155, ERC-20, IPFS, Arweave, Minting and Trading Platforms</li>
-                    <li>Decentralized Applications (dApps): Web3.js, Ethers.js, IPFS, Filecoin, Smart Contract Interactions</li>
-                    <li>Security: Smart Contract Auditing, Gas Optimization, Private Key Management, Secure Wallets, Best Practices in Blockchain Security</li>
-                </ul>
-                <h2>Code Architecture & Design</h2>
-                <ul>
-                    <li>Patterns & Principles: SOLID, Domain-Driven Design (DDD), Microservices, Event Sourcing, CQRS</li>
-                    <li>API Design: RESTful, GraphQL, gRPC</li>
-                    <li>Security: OAuth, JWT, API Security, Encryption, Secure Data Storage</li>
-                </ul>
-            </div>
-
-            <!-- Contact & Social Media Section -->
-            <div class="col-md-4">
-                <h2>Enterprise Blockchain Architecture</h2>
-                <ul>
-                    <li>Architecture & Design: Microservices, Event-driven Architecture, Serverless Frameworks</li>
-                    <li>Consensus Mechanisms: Proof of Work, Proof of Stake, Proof of Authority, Delegated Proof of Stake</li>
-                    <li>Blockchain Interoperability: Cross-chain Solutions, Chainlink, Bridges, Oracle Integration</li>
-                    <li>Blockchain Deployment: Node Management, Blockchain-as-a-Service, Cloud Integration (AWS, Azure, GCP)</li>
-                    <li>Scalability: Layer 2 Solutions, Sidechains, Sharding, State Channels</li>
-                </ul>
-                
-                <h2>Contact & Social Media</h2>
-                <p>
-                    <i class="fas fa-file"></i> <strong>Resume: </strong>
-                    <a target="_blank" href="https://drive.google.com/file/d/1QggpPmsk9ksY3-tMxfpJhIj3kgz_nEXp/view?usp=drive_link">download!!</a>
-                    <br>
-                    <i class="fas fa-file-pdf"></i> <strong>CV: </strong>
-                    <a target="_blank" href="https://drive.google.com/file/d/1XvG1BHLzwhtjfMacXXjtQm5dO2nU8wu9/view?usp=drive_link">download!!</a>
-                    <br>
-                    <i class="fas fa-envelope"></i> <strong>Email: </strong>
-                    <a target="_blank" href="mailto:hardik_savaliya@hotmail.com">hardik_savaliya@hotmail.com</a>
-                    <br>
-                    <i class="fab fa-github"></i> <strong>Github: </strong>
-                    <a target="_blank" href="https://github.com/HardikKSavaliya">Github Account</a>
-                    <br>
-                    <i class="fab fa-linkedin-in"></i> <strong>LinkedIn: </strong>
-                    <a target="_blank" href="https://www.linkedin.com/in/hardik-savaliya-28914333">LinkedIn Profile</a>
-                    <br>
-                    <i class="fab fa-skype"></i> <strong>Skype: </strong>
-                    <a target="_blank" href="skype:live:hardik_savaliya?chat">live:hardik_savaliya</a>
-                </p>
-            </div>
-
-            <!-- Badges & Certificates Section -->
-            <div class="col-md-4">
-                <h2>Backend Technologies</h2>
-                <ul>
-                    <li>Languages: Rust, Go, Node.js, C#, Solidity</li>
-                    <li>Blockchain Libraries/Frameworks: Truffle, Hardhat, Web3.js, Ethers.js, Substrate, Polkadot.js</li>
-                    <li>Databases: ArangoDB, MongoDB, Firebase, MySQL, Postgres</li>
-                    <li>Queueing Systems: RabbitMQ, Kafka, Redis, Celery</li>
-                </ul>
-                <h2>Web Technologies & Frontend Integration</h2>
-                <ul>
-                    <li>Web3 Integration: Angular, TypeScript</li>
-                    <li>Frontend Blockchain: MetaMask, WalletConnect, Web3.js</li>
-                    <li>Tokenized Assets Management: Crypto Wallet Integration, NFT Marketplaces</li>
-                </ul>
-                <h2>Badges & Certificates</h2>
-                <ul>
-                    <li>
-                        <a target="_blank" href="https://courses.cognitiveclass.ai/certificates/a3984edfd57c42359906db7088a0fa47">
-                            Blockchain Essentials
-                        </a>
-                    </li>
-                    <li>
-                        <a target="_blank" href="https://www.udemy.com/certificate/UC-86XNLR8Q/">
-                            Ethereum and Solidity: The Complete Developer's Guide
-                        </a>
-                    </li>
-                     <li>
-                        <a target="_blank" href="https://coursera.org/share/c431544484cb9d3f69591cd215e51431">
-                            Blockchain Specialization
-                        </a>
-                    </li>
-                       <li>
-                        <a target="_blank" href="https://coursera.org/share/89b23a0d2cc2f8fb797883d357013663">
-                            Machine Learning Specialization
-                        </a>
-                    </li>
-                      
-                </ul>
-            </div>
-        </div>
+<nav>
+  <div class="wrap">
+    <div class="brand">hardik<span class="dot">.</span>eth</div>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#stack">Stack</a>
     </div>
-</body>
+    <a href="#contact" class="navcta">Get in touch</a>
+  </div>
+</nav>
 
+<header class="hero">
+  <div class="wrap">
+    <div class="status-line"><span class="status-dot"></span> OPEN_TO_WORK — REMOTE · RUST · SYSTEMS DESIGN</div>
+
+    <span class="diffline plus"><span class="sym">+</span>10 years across C#, Node, and blockchain systems</span>
+    <span class="diffline plus"><span class="sym">+</span>shipped smart contracts in Solidity and Rust</span>
+
+    <h1 class="hero-title">Hardik Savaliya.<br>Systems designer. <span class="accent">Rust-focused.</span></h1>
+
+    <p class="hero-sub">10+ years designing backend and blockchain systems — microservices migrations, a decentralized NFT marketplace, smart contracts shipped on Ethereum in <strong>Solidity and Rust</strong>. Now going deeper on Rust as the primary language for the systems and decentralized-infra layer.</p>
+
+    <div class="hero-meta">
+      <div class="meta-item">
+        <div class="meta-label">Based in</div>
+        <div class="meta-val">Riyadh, Saudi Arabia</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Open for</div>
+        <div class="meta-val"><span class="tag">Rust</span> roles · remote · systems / Web3</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Currently</div>
+        <div class="meta-val">Senior Backend Developer — Astek Middle East</div>
+      </div>
+    </div>
+
+    <div class="hero-ctas">
+      <a href="#projects" class="btn btn-primary">See the build log →</a>
+      <a href="#contact" class="btn btn-ghost">Get in touch</a>
+    </div>
+
+    <div class="hero-socials">
+      <a href="https://github.com/HardikKSavaliya" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/hardik-k-savaliya" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:hardik_savaliya@hotmail.com">Email</a>
+      <a href="CV_Hardik_Savaliya.pdf" target="_blank" rel="noopener">Resume</a>
+    </div>
+  </div>
+</header>
+
+<div class="marquee-section">
+  <div class="wrap" style="padding:0;max-width:100%;">
+    <div class="marquee-row">
+      <div class="marquee-track" id="m1"></div>
+    </div>
+    <div class="marquee-row reverse">
+      <div class="marquee-track" id="m2"></div>
+    </div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow"><span class="bar"></span>About</div>
+      <h2>The design holds.<br>The language is <em>just syntax</em>.</h2>
+      <p>10+ years building systems across C#, Node, and blockchain — the constant is how the system is designed, not what it's written in.</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p><strong>10+ years</strong> designing and shipping production systems — enterprise microservices migrations in C#/.NET and Node, e-commerce platforms processing six figures in monthly orders, and blockchain systems including a self-built decentralized NFT marketplace that processed $50K+ in transactions in its first six months.</p>
+        <p>That marketplace is where Rust earned a permanent place in the stack — smart contracts on Ethereum written in <strong>both Solidity and Rust</strong>, optimized hard enough to cut gas fees 20%. The pattern across every role is the same: <strong>system design</strong> first — where state lives, how components fail, what breaks under load — with the language chosen to fit the job.</p>
+        <p>The next chapter is deliberately Rust-first: deepening systems-level Rust for decentralized infrastructure, distributed systems, and the kind of work where compile-time guarantees aren't optional.</p>
+      </div>
+      <div class="code-card">
+        <div class="code-card-head"><div class="dots"><span></span><span></span><span></span></div> engineer.toml</div>
+        <div class="code-card-body">
+          <div><span class="c1">[profile]</span></div>
+          <div class="indent"><span class="c4">name</span> = <span class="c3">"Hardik Savaliya"</span></div>
+          <div class="indent"><span class="c4">role</span> = <span class="c3">"systems designer"</span></div>
+          <div class="indent"><span class="c4">years</span> = <span class="c2">10</span></div>
+          <div>&nbsp;</div>
+          <div><span class="c1">[stacks]</span></div>
+          <div class="indent"><span class="c4">backend</span> = <span class="c3">["C#", ".NET", "Node.js"]</span></div>
+          <div class="indent"><span class="c4">blockchain</span> = <span class="c3">["Solidity", "Rust"]</span></div>
+          <div class="indent"><span class="c4">shipped</span> = <span class="c3">"NFT marketplace, $50K+ volume"</span></div>
+          <div>&nbsp;</div>
+          <div><span class="c1">[focus]</span></div>
+          <div class="indent"><span class="c4">now</span> = <span class="c3">"Rust-first systems design"</span></div>
+          <div class="indent"><span class="c4">domain</span> = <span class="c3">"decentralized_infra"</span></div>
+          <div class="indent"><span class="c4">constant</span> = <span class="c3">"the design, not the syntax"</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat-box">
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Years across C#, Node & blockchain systems</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">$50K+</div>
+        <div class="stat-label">NFT marketplace volume, first 6 months</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">3x</div>
+        <div class="stat-label">Scalability gain on enterprise microservices migration</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow"><span class="bar"></span>Experience</div>
+      <h2>The log so far.</h2>
+      <p>Chronological — same as a commit history. Most recent at the top.</p>
+    </div>
+    <div class="log">
+      <div class="log-entry current">
+        <div class="log-dot"></div>
+        <div class="log-meta">
+          <span class="log-date">Oct 2022 — Present</span>
+          <span class="log-loc">Riyadh, Saudi Arabia</span>
+        </div>
+        <div class="log-role">Senior Backend Developer — <span class="at">Astek Middle East</span></div>
+        <div class="log-desc">Led the design and migration of an enterprise-level microservices architecture for BLU Store, the official Al-Hilal sports club merchandise platform — improving system scalability 3x. Migrated a legacy system to Node.js, .NET, Postgres, ArangoDB, and RabbitMQ, cutting API response times 40% and speeding order processing 30% through caching and database optimization.</div>
+        <div class="log-tags"><span>Node.js</span><span>.NET</span><span>Postgres</span><span>ArangoDB</span><span>RabbitMQ</span><span>Microservices</span></div>
+      </div>
+      <div class="log-entry">
+        <div class="log-dot"></div>
+        <div class="log-meta">
+          <span class="log-date">2022 — 2023</span>
+          <span class="log-loc">Independent</span>
+        </div>
+        <div class="log-role">Independent Blockchain Consultant — <span class="at">NFT Marketplace</span></div>
+        <div class="log-desc">Designed and built a decentralized NFT marketplace from the ground up, processing $50K+ in transactions in its first 6 months. Wrote and deployed smart contracts on Ethereum in Solidity and Rust, cutting gas fees 20% through contract optimization, and integrated IPFS for fully decentralized asset storage and ownership verification.</div>
+        <div class="log-tags"><span>Solidity</span><span>Rust</span><span>Ethereum</span><span>IPFS</span><span>Smart Contracts</span></div>
+      </div>
+      <div class="log-entry">
+        <div class="log-dot"></div>
+        <div class="log-meta">
+          <span class="log-date">2021 — 2022</span>
+          <span class="log-loc">Remote</span>
+        </div>
+        <div class="log-role">Full Stack Software Developer — <span class="at">Systematic Technologies</span></div>
+        <div class="log-desc">Led design and optimization of a NoSQL e-commerce platform (pik.sa) for Jahez International, managing the system-level architecture and migration from monolith to microservices with Node.js, ArangoDB, Angular 2, and Docker.</div>
+        <div class="log-tags"><span>Node.js</span><span>ArangoDB</span><span>Angular</span><span>Docker</span><span>Microservices</span></div>
+      </div>
+      <div class="log-entry">
+        <div class="log-dot"></div>
+        <div class="log-meta">
+          <span class="log-date">2021 — 2022</span>
+          <span class="log-loc">Independent</span>
+        </div>
+        <div class="log-role">Independent Consultant — <span class="at">Encora Inc.</span></div>
+        <div class="log-desc">Built and deployed Canada's largest flower delivery e-commerce platform (1800flowers.ca), processing 100K+ orders per month. Improved order processing speed 45%, cut checkout failures 30%, and achieved PCI-DSS compliance with 99.99% transaction success.</div>
+        <div class="log-tags"><span>Node.js</span><span>Angular</span><span>MySQL</span><span>Payments</span></div>
+      </div>
+      <div class="log-entry">
+        <div class="log-dot"></div>
+        <div class="log-meta">
+          <span class="log-date">2016 — 2020</span>
+          <span class="log-loc">Remote</span>
+        </div>
+        <div class="log-role">Software Developer — <span class="at">Peerbits Solutions</span></div>
+        <div class="log-desc">Designed, built, and deployed Easy203kPro and Easy Contractor Pro — FHA 203k loan cost-analysis and project management platforms — using .NET MVC and MSSQL. Owned system-level architecture across multiple concurrent products including Airport Park Manager and TraderDock.</div>
+        <div class="log-tags"><span>.NET MVC</span><span>MSSQL</span><span>System Design</span></div>
+      </div>
+      <div class="log-entry">
+        <div class="log-dot"></div>
+        <div class="log-meta">
+          <span class="log-date">2016 — 2018</span>
+          <span class="log-loc">Remote</span>
+        </div>
+        <div class="log-role">Software Developer — <span class="at">Advent Intermodal</span></div>
+        <div class="log-desc">Built and maintained eModal®, the world's largest port community system, used by terminal and port operators worldwide. Designed APIs, admin tooling, and core platform features for truck scheduling, traffic mitigation, and fee collection using .NET MVC, EF, LINQ, and AngularJS.</div>
+        <div class="log-tags"><span>.NET MVC</span><span>EF</span><span>LINQ</span><span>AngularJS</span></div>
+      </div>
+      <div class="log-entry">
+        <div class="log-dot"></div>
+        <div class="log-meta">
+          <span class="log-date">2014 — 2016</span>
+          <span class="log-loc">Mumbai · South Africa (remote)</span>
+        </div>
+        <div class="log-role">Software Developer — <span class="at">Digital Mirror · loyal1.co.za · Dzyris Info Tech</span></div>
+        <div class="log-desc">Early career across three products: a tradesman marketplace platform, a customer loyalty rewards system for a South African client, and an in-house construction ERP for project costing and financial reporting — all built on .NET / ASP.NET and SQL Server.</div>
+        <div class="log-tags"><span>ASP.NET</span><span>SQL Server</span><span>jQuery</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow"><span class="bar"></span>Projects</div>
+      <h2>Shipped, and what's next.</h2>
+      <p>One real product already live. The rest are deliberately scoped systems-level builds going deeper into Rust.</p>
+    </div>
+    <div class="proj-grid">
+
+      <div class="proj-card">
+        <div class="proj-top">
+          <span class="proj-status live">Shipped</span>
+          <span class="proj-pillar">Blockchain — DeFi/NFT</span>
+        </div>
+        <div class="proj-title">Decentralized NFT Marketplace</div>
+        <div class="proj-desc">Built and launched independently — smart contracts on Ethereum in Solidity and Rust, IPFS-backed asset storage for full ownership verification, and gas optimization that cut fees 20%. Processed $50K+ in transactions in its first 6 months.</div>
+        <div class="proj-stack"><span>Solidity</span><span>Rust</span><span>Ethereum</span><span>IPFS</span></div>
+        <div class="proj-link">Case study →</div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-top">
+          <span class="proj-status planned">Planned</span>
+          <span class="proj-pillar">Systems — Infra</span>
+        </div>
+        <div class="proj-title">Distributed KV Store</div>
+        <div class="proj-desc">A key-value store with Raft consensus, built from first principles to understand replication, leader election, and failure modes — not wrapping an existing engine.</div>
+        <div class="proj-stack"><span>Rust</span><span>Raft</span><span>Tokio</span></div>
+        <div class="proj-link">Code →</div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-top">
+          <span class="proj-status planned">Planned</span>
+          <span class="proj-pillar">Systems — Infra</span>
+        </div>
+        <div class="proj-title">HTTP/2 Server</div>
+        <div class="proj-desc">A server built on raw sockets and the HTTP/2 spec, to actually understand framing, multiplexing, and flow control instead of trusting a framework to handle it.</div>
+        <div class="proj-stack"><span>Rust</span><span>Tokio</span><span>HTTP/2</span></div>
+        <div class="proj-link">Code →</div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-top">
+          <span class="proj-status planned">Planned</span>
+          <span class="proj-pillar">Systems — Data</span>
+        </div>
+        <div class="proj-title">Columnar Query Engine</div>
+        <div class="proj-desc">A small analytical query engine over columnar storage — the kind of project that forces real understanding of query planning and execution, not just SQL syntax.</div>
+        <div class="proj-stack"><span>Rust</span><span>Arrow</span><span>Query Planning</span></div>
+        <div class="proj-link">Code →</div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-top">
+          <span class="proj-status planned">Planned</span>
+          <span class="proj-pillar">Decentralized Infra</span>
+        </div>
+        <div class="proj-title">privy — Decentralized VPN</div>
+        <div class="proj-desc">A peer-routed VPN exploring decentralized networking primitives — NAT traversal, peer discovery, and encrypted tunneling without a central operator.</div>
+        <div class="proj-stack"><span>Rust</span><span>P2P</span><span>Networking</span></div>
+        <div class="proj-link">Code →</div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-top">
+          <span class="proj-status planned">Planned</span>
+          <span class="proj-pillar">Blockchain — Ethereum</span>
+        </div>
+        <div class="proj-title">Reth Contributions</div>
+        <div class="proj-desc">Working contributions to Reth, the Rust Ethereum execution client — the most direct path into production-grade blockchain infrastructure code.</div>
+        <div class="proj-stack"><span>Rust</span><span>Ethereum</span><span>Reth</span></div>
+        <div class="proj-link">Repo →</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="stack">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow"><span class="bar"></span>Stack</div>
+      <h2>The full toolkit.</h2>
+      <p>A decade of backend and blockchain systems — Rust sits at the center going forward.</p>
+    </div>
+    <div class="stack-grid">
+      <div class="stack-col">
+        <h3>// Rust &amp; Blockchain</h3>
+        <div class="stack-tags">
+          <span>Rust</span><span>Solidity</span><span>Vyper</span><span>Ethereum</span>
+          <span>Solana</span><span>Polkadot</span><span>EVM</span><span>Layer 2</span>
+          <span>Smart Contracts</span><span>Web3.js / Ethers.js</span><span>IPFS</span>
+          <span>Gas Optimization</span><span>Truffle / Hardhat</span><span>Substrate</span>
+        </div>
+      </div>
+      <div class="stack-col">
+        <h3>// Backend &amp; Systems</h3>
+        <div class="stack-tags">
+          <span>C#</span><span>.NET / .NET Core</span><span>Node.js</span><span>Go</span>
+          <span>ASP.NET MVC</span><span>EF / LINQ</span><span>System Design</span>
+          <span>Microservices</span><span>Event-Driven Architecture</span><span>DDD</span>
+          <span>CQRS</span><span>RabbitMQ / Kafka</span>
+        </div>
+      </div>
+      <div class="stack-col">
+        <h3>// Data &amp; Infra</h3>
+        <div class="stack-tags">
+          <span>Postgres</span><span>SQL Server</span><span>MySQL</span><span>ArangoDB</span>
+          <span>MongoDB</span><span>Redis</span><span>Docker</span><span>AWS / Azure / GCP</span>
+          <span>CI/CD</span>
+        </div>
+      </div>
+      <div class="stack-col">
+        <h3>// Architecture &amp; Security</h3>
+        <div class="stack-tags">
+          <span>RESTful / GraphQL / gRPC</span><span>OAuth / JWT</span>
+          <span>Smart Contract Auditing</span><span>Cross-chain / Bridges</span>
+          <span>Consensus Mechanisms</span><span>State Channels / Sharding</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-text">
+        <div class="eyebrow"><span class="bar"></span>Contact</div>
+        <h2 style="margin-top:14px;font-family:var(--sans);font-weight:800;font-size:clamp(28px,3.6vw,40px);letter-spacing:-0.02em;">Let's talk.</h2>
+        <p style="margin-top:18px;">Open to <strong>Rust and decentralized infra roles</strong>, systems design work, and conversations with teams building distributed systems. Also open to remote <strong>C# / Node work</strong> — a decade of production experience there isn't going anywhere.</p>
+        <p>Short is fine. I reply fast.</p>
+      </div>
+      <div class="contact-list">
+        <a class="contact-row" href="mailto:hardik_savaliya@hotmail.com">
+          <span class="contact-label">Email</span>
+          <span class="contact-val">hardik_savaliya@hotmail.com</span>
+          <span class="contact-arrow">→</span>
+        </a>
+        <a class="contact-row" href="https://github.com/HardikKSavaliya" target="_blank" rel="noopener">
+          <span class="contact-label">GitHub</span>
+          <span class="contact-val">github.com/HardikKSavaliya</span>
+          <span class="contact-arrow">→</span>
+        </a>
+        <a class="contact-row" href="https://app.ens.domains/hardiksavaliya.eth" target="_blank" rel="noopener">
+          <span class="contact-label">ENS</span>
+          <span class="contact-val">hardiksavaliya.eth</span>
+          <span class="contact-arrow">→</span>
+        </a>
+        <a class="contact-row" href="https://www.linkedin.com/in/hardik-k-savaliya" target="_blank" rel="noopener">
+          <span class="contact-label">LinkedIn</span>
+          <span class="contact-val">in/hardik-k-savaliya</span>
+          <span class="contact-arrow">→</span>
+        </a>
+        <a class="contact-row" href="CV_Hardik_Savaliya.pdf" target="_blank" rel="noopener">
+          <span class="contact-label">Resume</span>
+          <span class="contact-val">Download CV (PDF)</span>
+          <span class="contact-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-left">
+        <div class="brand">hardiksavaliya<span class="dot">.</span>eth</div>
+        <p>Systems designer. C#, Node, blockchain. Rust-first going forward.</p>
+      </div>
+      <div class="footer-right">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Hardik. All rights reserved.</span>
+      <span>Compiled with cargo build --release</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const techWords = ["C#",".NET","Node.js","Rust","ASP.NET","Postgres","ArangoDB","System Design","Microservices","REST APIs","GraphQL","RabbitMQ","Docker","Azure / AWS / GCP"];
+const blockchainWords = ["Solidity","Rust","Ethereum","Solana","Polkadot","IPFS","Smart Contracts","Web3.js","NFTs","DeFi","Gas Optimization","Truffle / Hardhat","Layer 2"];
+
+function buildTrack(words, hotEvery){
+  let html = '';
+  for(let r=0;r<2;r++){
+    words.forEach((w,i)=>{
+      const isHot = (i % hotEvery === 0);
+      html += `<span class="pill${isHot ? ' hot' : ''}">${w}</span>`;
+    });
+  }
+  return html;
+}
+document.getElementById('m1').innerHTML = buildTrack(techWords, 4);
+document.getElementById('m2').innerHTML = buildTrack(blockchainWords, 3);
+</script>
+
+</body>
 </html>
